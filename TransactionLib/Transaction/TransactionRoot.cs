@@ -1,13 +1,19 @@
-﻿namespace TransactionLib
+﻿namespace TransactionLib.Transaction
 {
     using System;
-    using Operations;
+    using TransactionLib.Operations;
 
     public class TransactionRoot<TInput, TOutput, TErrorInfo> : TransactionNode<TInput, TOutput, TInput, TErrorInfo>
         where TErrorInfo : ErrorInfo, new()
     {
         protected TransactionRoot(Operation<TInput, TOutput, TErrorInfo> operation) : base(operation)
         {
+        }
+
+        public static TransactionRoot<TI, TO, TEInfo> ForOperation<TI, TO, TEInfo>(Operation<TI, TO, TEInfo> operation)
+            where TEInfo : ErrorInfo, new()
+        {
+            return new TransactionRoot<TI, TO, TEInfo>(operation);
         }
 
         public override TOutput Execute(TInput input)
@@ -34,12 +40,6 @@
                     throw new TransactionException(e) { Handled = true };
                 }
             }
-        }
-
-        internal static TransactionRoot<TI, TO, TEInfo> ForOperation<TI, TO, TEInfo>(Operation<TI, TO, TEInfo> operation)
-            where TEInfo : ErrorInfo, new()
-        {
-            return new TransactionRoot<TI, TO, TEInfo>(operation);
         }
     }
 }

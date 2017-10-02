@@ -10,21 +10,21 @@
         {
             var op1 = new Operation1();
             var t = TransactionQueue.First(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(op1)
-                .Next(new Operation2());
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(op1)
+                .Then(new Operation2());
             var r = t.Execute(0);
         }
 

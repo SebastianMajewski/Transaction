@@ -1,4 +1,4 @@
-﻿namespace TransactionLib
+﻿namespace TransactionLib.Transaction
 {
     using System;
     using Operations;
@@ -24,8 +24,6 @@
             tn.SetParent(this);
             return tn;
         }
-
-        public TransactionQueue
 
         public virtual TOutput Execute(TInput input)
         {

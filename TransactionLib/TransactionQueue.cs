@@ -1,6 +1,7 @@
 ﻿namespace TransactionLib
 {
     using Operations;
+    using Transaction;
 
     public class TransactionQueue
     {
