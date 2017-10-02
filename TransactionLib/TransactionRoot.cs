@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace Transaction
+﻿namespace TransactionLib
 {
+    using System;
+    using Operations;
+
     public class TransactionRoot<TInput, TOutput, TErrorInfo> : TransactionNode<TInput, TOutput, TInput, TErrorInfo>
         where TErrorInfo : ErrorInfo, new()
     {
@@ -13,31 +14,32 @@ namespace Transaction
         {
             try
             {
-                return this.operation.Execute(input, out errorInfo);
+                return this.Operation.Execute(input, out this.errorInfo);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                if (e is TransactionException trExc && (trExc.Handled || trExc.RollbackException))
+                var transExc = e as TransactionException;
+                if (transExc != null && (transExc.Handled || transExc.RollbackException))
                 {
                     throw;
                 }
                 else
                 {
-                    if (errorInfo == null)
+                    if (this.errorInfo == null)
                     {
-                        errorInfo = new TErrorInfo();
+                        this.errorInfo = new TErrorInfo();
                     }
-                    errorInfo.Exception = e;
+                    this.errorInfo.Exception = e;
                     this.Rollback();
                     throw new TransactionException(e) { Handled = true };
                 }
             }
         }
 
-        public static TransactionRoot<TI, TO, TEI> ForFunc<TI, TO, TEI>(Operation<TI, TO, TEI> operation)
-            where TEI : ErrorInfo, new()
+        internal static TransactionRoot<TI, TO, TEInfo> ForOperation<TI, TO, TEInfo>(Operation<TI, TO, TEInfo> operation)
+            where TEInfo : ErrorInfo, new()
         {
-            return new TransactionRoot<TI, TO, TEI>(operation);
+            return new TransactionRoot<TI, TO, TEInfo>(operation);
         }
     }
 }

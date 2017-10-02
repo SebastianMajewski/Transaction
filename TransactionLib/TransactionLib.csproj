@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4E82423-E489-4FC3-8749-D8E4CEC26D7E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Transaction</RootNamespace>
-    <AssemblyName>Transaction</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{8B27798A-CA7A-4DC7-9A82-A8CC60037528}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransactionLib</RootNamespace>
+    <AssemblyName>TransactionLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,20 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ErrorInfoImpl.cs" />
-    <Compile Include="Operation1.cs" />
-    <Compile Include="Operation2.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ErrorInfo.cs" />
+    <Compile Include="Operations\ParameterlessVoidOperation.cs" />
+    <Compile Include="Operations\ParameterlessOperation.cs" />
+    <Compile Include="Operations\VoidOperation.cs" />
+    <Compile Include="Operations\Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TransactionLib\TransactionLib.csproj">
-      <Project>{8b27798a-ca7a-4dc7-9a82-a8cc60037528}</Project>
-      <Name>TransactionLib</Name>
-    </ProjectReference>
+    <Compile Include="TransactionException.cs" />
+    <Compile Include="TransactionNode.cs" />
+    <Compile Include="TransactionQueue.cs" />
+    <Compile Include="TransactionRoot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

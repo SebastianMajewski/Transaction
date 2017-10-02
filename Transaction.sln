@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction", "Transaction\Transaction.csproj", "{F4E82423-E489-4FC3-8749-D8E4CEC26D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionLib", "TransactionLib\TransactionLib.csproj", "{8B27798A-CA7A-4DC7-9A82-A8CC60037528}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F4E82423-E489-4FC3-8749-D8E4CEC26D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E82423-E489-4FC3-8749-D8E4CEC26D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E82423-E489-4FC3-8749-D8E4CEC26D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B27798A-CA7A-4DC7-9A82-A8CC60037528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B27798A-CA7A-4DC7-9A82-A8CC60037528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B27798A-CA7A-4DC7-9A82-A8CC60037528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B27798A-CA7A-4DC7-9A82-A8CC60037528}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

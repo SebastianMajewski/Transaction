@@ -1,4 +1,4 @@
-﻿namespace Transaction
+﻿namespace TransactionLib.Operations
 {
     public abstract class Operation<TInput, TOutput, TErrorInfo>
         where TErrorInfo : ErrorInfo
